@@ -1,0 +1,37 @@
+ADD
+{
+  "fname":"Aastha",
+  "lname":"Rai",
+  "birth_time": "8:40",
+  "birth_city":"Mumbai",
+  "birth_state":"Maharashtra",
+  "email":"aasthasrai@gmail.com",
+  "password":"Aastha123",
+  "phone_no":"9967063058",
+  "contact_through":"Web-Chat"
+}
+
+UPDATE
+{
+  "update": {
+    "fname":"Aasthas",
+    "lname":"Rai",
+    "birth_time": "8:51",
+    "birth_city":"Mumbai",
+    "birth_state":"Maharashtra",
+    "email":"aasthasrai@gmail.com",
+    "password":"Aastha123",
+    "phone_no":"9967063058",
+    "contact_through":"Web-Chat"
+  },
+  "filter":{
+      "fname": "Aastha"
+  }
+}
+
+REMOVE
+{
+  "filter":{
+      "fname": "Aasthas"
+  }
+}
