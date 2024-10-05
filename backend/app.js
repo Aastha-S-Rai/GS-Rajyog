@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import clientRouter from './routes/Clients.js';
 import serviceRouter from './routes/Services.js';
+import providerRouter from './routes/Providers.js';
 
 const app = express();
 const port = 4000;
@@ -24,6 +25,7 @@ app.get('/', (req, res) => {
 // app.use('/accounts', accountRouter);
 app.use('/clients', clientRouter);
 app.use('/services', serviceRouter);
+app.use('/providers', providerRouter)
 // app.use('/login', loginUser);
 
 app.listen(port, () => {
