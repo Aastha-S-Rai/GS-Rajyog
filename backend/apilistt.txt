@@ -35,3 +35,44 @@ REMOVE
       "fname": "Aasthas"
   }
 }
+
+
+ADD PROVIDER API:
+
+{
+    "fname": "Sulakshana",
+    "lname": "Rai",
+    "email": "sulakshana97@gmail.com",
+    "password": "Sulakshana@97",
+    "phone_no": "9022721706",
+    "review": "5",
+    "services": {"1234":["name analysis", 100], "3456": ["birth date analysis", 200]}
+}
+
+response:
+{
+    "res": {
+        "fname": "Sulakshana",
+        "lname": "Rai",
+        "email": "sulakshana97@gmail.com",
+        "password": "$2b$10$IalU/CKumZhIt5yCQnwJ8OEvfDRvMrMNrG0g3HecsxA2Bv5TNQPgC",
+        "phone_no": 9022721706,
+        "review": 5,
+        "_id": "6701770194430fcf16ebe6cb",
+        "__v": 0,
+        "services": [
+            {
+                "provider": "6701770194430fcf16ebe6cb",
+                "service": "1234",
+                "service_name": "name analysis",
+                "price": 100
+            },
+            {
+                "provider": "6701770194430fcf16ebe6cb",
+                "service": "3456",
+                "service_name": "birth date analysis",
+                "price": 200
+            }
+        ]
+    }
+}
