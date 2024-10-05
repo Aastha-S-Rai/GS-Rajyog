@@ -21,7 +21,7 @@ clientSchema.virtual("name").get(function () {
   return `${this.fname} ${this.lname}`;
 });
 
-const Client = connector.model("users", clientSchema);
+const Client = connector.model("clients", clientSchema);
 
 export async function setClient(clientData) {
   const newClient = new Client(clientData);
