@@ -22,8 +22,10 @@ export async function setMultipleMap(datalist) {
 }
 
 export async function readMap(filter) {
-  const map = Map.find(filter);
-  return map;
+  console.log(filter)
+  const mapp = await Map.find(filter);
+  // console.log(mapp)
+  return mapp;
 }
 
 export async function updateMap(filter, update) {

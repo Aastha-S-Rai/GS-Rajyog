@@ -4,8 +4,8 @@ import {
   updateProvider,
   removeProvider,
 } from "../models/Providers.js";
-import { setMultipleMap } from "../models/Map.js";
-// import { ObjectId } from "mongodb";
+import { setMultipleMap, readMap } from "../models/Map.js";
+import { ObjectId } from "mongodb";
 import bcrypt from "bcrypt";
 
 async function createProvider(req, res) {
@@ -21,12 +21,12 @@ async function createProvider(req, res) {
       let services_list = [];
       let insertt = [];
       for (const i in services) {
-        let objectId = result._id;
-        let objectIdString = objectId.toString();
+        // let objectId = result._id;
+        // let objectIdString = objectId.toString();
         // let serviceobjectId = i;
         // const serviceobjectIdString = serviceobjectId.toString();
         let data={
-            provider: objectIdString,
+            provider: result._id,
             service: i,
             service_name: services[i][0],
             price: services[i][1],
@@ -45,10 +45,26 @@ async function createProvider(req, res) {
     }
   }
 }
-
-async function getProvider(req, res) {
+async function getMultipleProvider(req, res) {
   const filter = req.body.filter;
-  const providers = await readProvider(filter);
+  let providers = await readProvider(filter);
+  if (providers) {
+    res.status(200);
+    res.json({ res: providers });
+  } else {
+    res.status(500);
+    res.json({ err: "something went wrong" });
+  }
+}
+async function getSingleProvider(req, res) {
+  const filter = req.body.filter;
+  let services={}
+  let providers = await readProvider(filter);
+  let getservices = await readMap({ provider: filter._id })
+  for( const i of getservices ){
+    services[i.service] = [i.service_name, i.price]
+  }
+  providers[0].services=services
   if (providers) {
     res.status(200);
     res.json({ res: providers });
@@ -83,4 +99,4 @@ async function editProvider(req, res) {
   }
 }
 
-export default { createProvider, getProvider, editProvider, delProvider };
+export default { createProvider, getSingleProvider, getMultipleProvider, editProvider, delProvider };

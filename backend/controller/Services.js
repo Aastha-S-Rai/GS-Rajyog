@@ -1,4 +1,5 @@
 import { readService, removeService,  setService, updateService} from "../models/Services.js";
+import { readMap } from "../models/Map.js"
 
 async function createService(req, res) {
   const data = req.body;
@@ -18,6 +19,18 @@ async function getService(req, res) {
   if (services) {
     res.status(200);
     res.json({ res: services });
+  } else {
+    res.status(500);
+    res.json({ err: "something went wrong" });
+  }
+}
+
+async function getProviders(req,res) {
+  const filter = req.body.filter;
+  const response = await readMap({service: filter._id})
+  if (response) {
+    res.status(200);
+    res.json({ res: response });
   } else {
     res.status(500);
     res.json({ err: "something went wrong" });
@@ -49,4 +62,4 @@ async function editService(req, res) {
   }
 }
 
-export default { createService, getService, delService, editService };
+export default { createService, getService, delService, editService, getProviders };
