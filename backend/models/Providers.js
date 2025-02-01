@@ -7,7 +7,7 @@ const providerSchema = mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   phone_no: { type: Number, required: true },
-  review: { type: Number }
+  photo: {type: String, required: true}
 });
 
 providerSchema.virtual("name").get(function () {
